@@ -1,0 +1,55 @@
+CREATE TABLE Empresa_Parceira 
+( 
+ id_empresa SERIAL PRIMARY KEY,  
+ nome VARCHAR(n) NOT NULL,  
+ telefone VARCHAR(n) NOT NULL,  
+ email VARCHAR(n) NOT NULL,  
+ data_inicio DATE NOT NULL
+); 
+
+CREATE TABLE Tecnologia 
+( 
+ id_tecnologia SERIAL PRIMARY KEY,  
+ nome VARCHAR(n) NOT NULL,  
+ descricao VARCHAR(n),  
+ area VARCHAR(n) NOT NULL
+); 
+
+CREATE TABLE Colaborador 
+( 
+ id_colaborador SERIAL PRIMARY KEY,  
+ nome VARCHAR(n) NOT NULL,  
+ email VARCHAR(n) NOT NULL,  
+ cargo VARCHAR(n) NOT NULL,  
+ id_empresa INT NOT NULL,
+ FOREIGN KEY(id_empresa) REFERENCES Empresa_Parceira(id_empresa)
+); 
+
+CREATE TABLE Tecnologia_Utilizada 
+( 
+ id_empresa INT NOT NULL,  
+ id_tecnologia INT NOT NULL,  
+ PRIMARY KEY (id_empresa, id_tecnologia),
+ FOREIGN KEY(id_empresa) REFERENCES Empresa_Parceira(id_empresa),
+ FOREIGN KEY(id_tecnologia) REFERENCES Tecnologia(id_tecnologia)
+);
+
+-- Adicionar registros para Empresa_Parceira
+INSERT INTO Empresa_Parceira (nome, telefone, email, data_inicio) VALUES 
+('Empresa A', '123456789', 'empresa_a@example.com', '2023-01-01'),
+('Empresa B', '987654321', 'empresa_b@example.com', '2022-05-10');
+
+-- Adicionar registros para Tecnologia
+INSERT INTO Tecnologia (nome, descricao, area) VALUES 
+('Java', 'Linguagem de programação', 'Desenvolvimento de software'),
+('Python', 'Linguagem de programação', 'Ciência de dados');
+
+-- Adicionar registros para Colaborador
+INSERT INTO Colaborador (nome, email, cargo, id_empresa) VALUES 
+('João', 'joao@example.com', 'Desenvolvedor', 1),
+('Maria', 'maria@example.com', 'Analista de Dados', 2);
+
+-- Adicionar registros para Tecnologia_Utilizada
+INSERT INTO Tecnologia_Utilizada (id_empresa, id_tecnologia) VALUES 
+(1, 1),
+(2, 2);
