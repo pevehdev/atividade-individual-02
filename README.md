@@ -22,30 +22,45 @@ Colaborador_Tecnologia: Representa a relação entre os colaboradores e as tecno
 
 Empresa_Parceira:
 id_empresa (INT): Chave primária autoincrementada.
+
 nome (VARCHAR): Nome da empresa.
+
 telefone (VARCHAR): Número de telefone da empresa.
+
 email (VARCHAR): Endereço de e-mail da empresa.
+
 data_inicio (DATE): Data de início da parceria.
 
 Tecnologia:
 id_tecnologia (INT): Chave primária autoincrementada.
+
 nome (VARCHAR): Nome da tecnologia.
+
 descricao (VARCHAR): Descrição da tecnologia (opcional).
+
 area (VARCHAR): Área de aplicação da tecnologia.
 
 Colaborador:
 id_colaborador (INT): Chave primária autoincrementada.
+
 nome (VARCHAR): Nome do colaborador.
+
 email (VARCHAR): Endereço de e-mail do colaborador.
+
 cargo (VARCHAR): Cargo do colaborador na empresa.
+
 id_empresa (INT): Chave estrangeira referenciando a tabela Empresa_Parceira.
 
 Tecnologia_Utilizada:
+
 id_empresa (INT): Chave estrangeira referenciando a tabela Empresa_Parceira.
+
 id_tecnologia (INT): Chave estrangeira referenciando a tabela Tecnologia.
 
 Colaborador_Tecnologia:
+
 id_colaborador (INT): Chave estrangeira referenciando a tabela Colaborador.
+
 id_tecnologia (INT): Chave estrangeira referenciando a tabela Tecnologia.
 
 ```
